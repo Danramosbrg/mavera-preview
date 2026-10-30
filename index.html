@@ -68,34 +68,145 @@
   section .sub {
     color: #5B5168;
     font-size: 14px;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    background: var(--roxo);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn.secondary {
+    background: white;
+    color: var(--roxo);
+    border: 1px solid #DCD3F0;
+  }
+  .btn:hover { opacity: 0.88; }
+
+  /* Carousel */
+  .carousel-wrap {
+    position: relative;
+    margin-top: 24px;
+  }
+  .carousel-viewport {
+    overflow: hidden;
+    border-radius: 16px;
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.35s ease;
+  }
+  .carousel-slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 0 4px;
+  }
+  @media (min-width: 640px) {
+    .carousel-slide { flex: 0 0 50%; max-width: 50%; }
+  }
+  .carousel-slide img {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid #DCD3F0;
+    display: block;
+  }
+  .slide-download {
+    position: absolute;
+    bottom: 14px;
+    right: 18px;
+    background: rgba(42, 27, 77, 0.85);
+    color: white;
+    border-radius: 999px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 1px solid #DCD3F0;
+    border-radius: 999px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--roxo);
+    user-select: none;
+    box-shadow: 0 4px 14px rgba(42,27,77,0.12);
+  }
+  .carousel-nav.prev { left: -8px; }
+  .carousel-nav.next { right: -8px; }
+  @media (min-width: 640px) {
+    .carousel-nav.prev { left: -21px; }
+    .carousel-nav.next { right: -21px; }
+  }
+  .carousel-counter {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 13px;
+    color: #8A7FA3;
+    font-weight: 600;
+  }
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .carousel-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #DCD3F0;
+  }
+  .carousel-dots span.active {
+    background: var(--lavanda);
+    width: 18px;
+    border-radius: 4px;
+  }
+
   .video-wrap {
     background: var(--roxo);
     border-radius: 20px;
     padding: 24px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
   }
   video {
     width: 100%;
     max-width: 380px;
     border-radius: 14px;
     display: block;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-  .grid img {
-    width: 100%;
-    border-radius: 12px;
-    border: 1px solid #DCD3F0;
-    display: block;
-  }
-  @media (max-width: 720px) {
-    .grid { grid-template-columns: repeat(2, 1fr); }
   }
   footer {
     text-align: center;
@@ -117,23 +228,42 @@
   </nav>
 
   <section id="carrossel">
-    <h2>Carrossel — exemplo de conteúdo</h2>
-    <div class="sub">8 artes, identidade visual da própria Mávera aplicada.</div>
-    <div class="grid">
-      <img src="c1.png" alt="Carrossel Mávera 1" />
-      <img src="c2.png" alt="Carrossel Mávera 2" />
-      <img src="c3.png" alt="Carrossel Mávera 3" />
-      <img src="c4.png" alt="Carrossel Mávera 4" />
-      <img src="c5.png" alt="Carrossel Mávera 5" />
-      <img src="c6.png" alt="Carrossel Mávera 6" />
-      <img src="c7.png" alt="Carrossel Mávera 7" />
-      <img src="c8.png" alt="Carrossel Mávera 8" />
+    <div class="section-head">
+      <div>
+        <h2>Carrossel — exemplo de conteúdo</h2>
+        <div class="sub">8 artes, identidade visual da própria Mávera aplicada.</div>
+      </div>
+      <a class="btn" href="carrossel-mavera.zip" download>⬇ Baixar todas as artes (.zip)</a>
     </div>
+
+    <div class="carousel-wrap">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="track">
+          <div class="carousel-slide"><img src="c1.png" alt="Carrossel Mávera 1" /><a class="slide-download" href="c1.png" download title="Baixar esta arte">⬇</a></div>
+          <div class="carousel-slide"><img src="c2.png" alt="Carrossel Mávera 2" /><a class="slide-download" href="c2.png" download title="Baixar esta arte">⬇</a></div>
+          <div class="carousel-slide"><img src="c3.png" alt="Carrossel Mávera 3" /><a class="slide-download" href="c3.png" download title="Baixar esta arte">⬇</a></div>
+          <div class="carousel-slide"><img src="c4.png" alt="Carrossel Mávera 4" /><a class="slide-download" href="c4.png" download title="Baixar esta arte">⬇</a></div>
+          <div class="carousel-slide"><img src="c5.png" alt="Carrossel Mávera 5" /><a class="slide-download" href="c5.png" download title="Baixar esta arte">⬇</a></div>
+          <div class="carousel-slide"><img src="c6.png" alt="Carrossel Mávera 6" /><a class="slide-download" href="c6.png" download title="Baixar esta arte">⬇</a></div>
+          <div class="carousel-slide"><img src="c7.png" alt="Carrossel Mávera 7" /><a class="slide-download" href="c7.png" download title="Baixar esta arte">⬇</a></div>
+          <div class="carousel-slide"><img src="c8.png" alt="Carrossel Mávera 8" /><a class="slide-download" href="c8.png" download title="Baixar esta arte">⬇</a></div>
+        </div>
+      </div>
+      <div class="carousel-nav prev" id="prevBtn">‹</div>
+      <div class="carousel-nav next" id="nextBtn">›</div>
+    </div>
+    <div class="carousel-counter" id="counter">1 / 8</div>
+    <div class="carousel-dots" id="dots"></div>
   </section>
 
   <section id="video">
-    <h2>Vídeo motion — exemplo de conteúdo</h2>
-    <div class="sub">Peça animada, sem necessidade de filmagem — o formato mais usado hoje para lançamento de apps e ferramentas.</div>
+    <div class="section-head">
+      <div>
+        <h2>Vídeo motion — exemplo de conteúdo</h2>
+        <div class="sub">Peça animada, sem necessidade de filmagem — o formato mais usado hoje para lançamento de apps e ferramentas.</div>
+      </div>
+      <a class="btn" href="motion.mp4" download>⬇ Baixar vídeo</a>
+    </div>
     <div class="video-wrap">
       <video controls playsinline poster="">
         <source src="motion.mp4" type="video/mp4" />
@@ -143,5 +273,57 @@
   </section>
 
   <footer>Pacific Lead — especialista em marketing para o setor de saúde.</footer>
+
+  <script>
+    const track = document.getElementById('track');
+    const slides = Array.from(track.children);
+    const counter = document.getElementById('counter');
+    const dotsWrap = document.getElementById('dots');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let index = 0;
+
+    function perView() {
+      return window.innerWidth >= 640 ? 2 : 1;
+    }
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function update() {
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      track.style.transform = `translateX(-${index * slideWidth}px)`;
+      counter.textContent = `${index + 1} / ${slides.length}`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    function next() {
+      const maxIndex = Math.max(0, slides.length - perView());
+      index = Math.min(index + 1, maxIndex);
+      update();
+    }
+    function prev() {
+      index = Math.max(index - 1, 0);
+      update();
+    }
+
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+    window.addEventListener('resize', update);
+
+    // touch swipe
+    let startX = 0;
+    track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', (e) => {
+      const diff = e.changedTouches[0].clientX - startX;
+      if (diff > 40) prev();
+      else if (diff < -40) next();
+    }, { passive: true });
+
+    update();
+  </script>
 </body>
 </html>
